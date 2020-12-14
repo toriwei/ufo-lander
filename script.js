@@ -1,12 +1,11 @@
-/* global loadImage, WEBGL, createCanvas noStroke background directionalLight pointLight noLoop push texture spotLight translate rotateX plane pop 
-scale ambientMaterial sphere emissiveMaterial cylinder cone width height shininess rotateY specularMaterial rotateZ*/
-
 let grassImage;
 let starsImage;
 let moonImage;
 let treetrunkImage;
+let ufoScale = 80;
 let ufoRotation = 0;
 let starRotation = 0;
+let moonRotation = 0;
 let elevation = -300;
 let treeHeight = 100;
 let treeRadius = 25;
@@ -88,7 +87,6 @@ function drawTrees() {
     pop();
   }
 }
-let moonRotation = 0;
 function drawMoon() {
   push();
   rotateZ(moonRotation);
@@ -115,11 +113,11 @@ function drawBody() {
   translate(0, elevation, 0);
   scale(1, 0.25, 1);
   specularMaterial("lightblue");
-  sphere(80);
+  sphere(ufoScale);
   specularMaterial("purple");
   translate(0, -80, 0);
   scale(1, 4, 1);
-  sphere(40);
+  sphere(ufoScale/2);
 }
 
 function drawAntenna() {
@@ -129,7 +127,7 @@ function drawAntenna() {
   cylinder(2, 20);
   translate(0, -10, 0);
   emissiveMaterial("yellow");
-  sphere(5);
+  sphere(ufoScale/16);
   pop();
 }
 
@@ -137,7 +135,7 @@ function drawWindow() {
   push();
   translate(0, -15, 20);
   emissiveMaterial("lightblue");
-  sphere(20);
+  sphere(ufoScale/4);
   pop();
 }
 
@@ -146,7 +144,7 @@ function drawTopLights() {
     push();
     translate(...lightCoordinate);
     emissiveMaterial("yellow");
-    sphere(10);
+    sphere(ufoScale/8);
     pop();
   }
 }
@@ -154,7 +152,7 @@ function drawTopLights() {
 function drawBottomLight() {
   translate(0, 40, 0);
   emissiveMaterial("white");
-  sphere(10);
+  sphere(ufoScale/10);
   ufoRotation += 0.02;
 }
 
